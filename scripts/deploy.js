@@ -5,7 +5,6 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  console.log("333333");
   const HashStorage = await ethers.getContractFactory("HashStorage");
   const hashStorage = await HashStorage.deploy();
 
