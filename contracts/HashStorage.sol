@@ -15,10 +15,10 @@ contract HashStorage {
         event HashDeleteFailed(string hash, string reason);
 
         // Function to store hash
-        function storeHash(string memory hash, string memory param) public returns (bool) {
+        function storeHash(string memory hash, string memory param) public returns (string memory) {
             if (hashExists[hash] && hashActive[hash]) {
                 emit HashStoreFailed(hash, "Hash already exists");
-                return false; // Hash already exists, indicate failure
+                return "Hash already exists"; // Hash already exists, indicate failure
             }
             dataStorage[hash] = Data({
                 hash: hash,
@@ -27,8 +27,8 @@ contract HashStorage {
             hashExists[hash] = true;
             hashActive[hash] = true; // Mark hash as active
 
-            emit HashStored(hash);
-            return true; // Hash stored successfully
+            emit HashStored("Hash Stored");
+            return "Hash Stored"; // Hash stored successfully
         }
 
         // Function to delete (expire) hash

@@ -72,8 +72,8 @@
       ]
     },
     "E:\\Git\\QRcodeblockchain\\qrcode_hash_blockchain\\contracts\\HashStorage.sol": {
-      "lastModificationDate": 1708037818275,
-      "contentHash": "1f1d81a15cc1026c5c99f2d5f150b594",
+      "lastModificationDate": 1708437415964,
+      "contentHash": "9a9f260484dcea38b1d6a4fafbf70a54",
       "sourceName": "contracts/HashStorage.sol",
       "solcConfig": {
         "version": "0.8.17",
