@@ -39,27 +39,24 @@ contract HashStorage {
     // Function to delete (expire) hash
     function deleteHash(string memory hash) public returns (string memory) {
         // require(initialized, "Contract is not initialized.");
-        if (!hashExists[hash]) {
-            emit HashDeleteFailed(hash, "Hash does not exist");
-            return "Hash does not exist"; // Hash does not exist, cannot expire
-        }
         if (!hashActive[hash]) {
-            emit HashDeleteFailed(hash, "Hash already expired");
-            return "Hash already expired"; // Hash already expired
+            emit HashDeleteFailed(hash, "QR already expired");
+            return "QR already expired"; // Hash already expired
+        }
+
+        if (!hashExists[hash]) {
+            emit HashDeleteFailed(hash, "QR does not exist");
+            return "QR does not exist"; // Hash does not exist, cannot expire
         }
 
         hashActive[hash] = false; // Mark hash as expired
         emit HashDeleted(hash);
-        return "Hash expired successfully"; // Hash expired successfully
+        return "QR expired successfully"; // Hash expired successfully
     }
 
     // Function to verify hash
-    function verifyHash(string memory hash) public view returns (bool) {
-        if (!hashExists[hash] && !hashActive[hash]) {
-                    return true;
-        } else {
-                    return false;
-         }
+     function verifyHash(string memory hash) public view returns (bool) {
+        return !hashExists[hash] && !hashActive[hash];
     }
     // Migration function to batch insert hashes
     // function migrateData(string[] calldata hashes, bool[] calldata actives) public {
